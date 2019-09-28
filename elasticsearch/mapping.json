@@ -1,0 +1,38 @@
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "tokenizer": {
+                    "kuromoji_user_dict": {
+                        "type": "kuromoji_tokenizer",
+                        "mode": "search",
+                        "discard_punctuation": "false"
+                    }
+                },
+                "analyzer": {
+                    "my_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "kuromoji_user_dict",
+                        "user_dictionary": "userdict_ja.txt"
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "shop_type": {
+            "properties": {
+                "name": {
+                    "type": "text",
+                    "analyzer": "my_analyzer"
+                },
+                "link": {
+                    "type": "keyword"
+                },
+                "phoneNumber": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}
