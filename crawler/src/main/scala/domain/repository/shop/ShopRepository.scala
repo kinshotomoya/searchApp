@@ -10,7 +10,7 @@ trait ShopRepository extends Serializable {
   val shopRepository: ShopRepository.Service[Any]
 }
 
-object ShopRepository {
+object ShopRepository extends Serializable {
 
   trait Service[R] extends Serializable {
     def insertShopInfo(shops: Seq[ShopInfo]): ZIO[R, Any, Int]

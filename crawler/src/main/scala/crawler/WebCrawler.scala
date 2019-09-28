@@ -1,12 +1,13 @@
+package crawler
+
 import domain.model.ShopInfo
 import org.jsoup.Jsoup
 import service.ShopService
 
 import scala.collection.JavaConverters._
 
-
 object WebCrawler {
-  def  main(args: Array[String]) = {
+  def main(args: Array[String]): Unit = {
     // 店舗名・リンク先を取得する
     // case classに詰めて、elasticseachに処理を投げる
     val urlStr = "http://www.goldsgym.jp"
@@ -23,7 +24,7 @@ object WebCrawler {
           phoneNumber = Option(shop.attr("phoneNumber").changeEmptyStrIntoNull)
         )
       }
-      ShopService().insertShopInfo(shops)
+      ShopService().insert(shops)
 
     } catch {
       case e:Exception => println(e.getMessage)
