@@ -1,5 +1,10 @@
 .idea/*
 target/
-crawler/.idea
 
+# ignore .idea settings
+crawler/.idea
+batch/.idea
+
+# ignore midleware data
 mysql/db/data/*
+redis/data/*
