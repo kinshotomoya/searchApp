@@ -21,3 +21,24 @@ services:
     ports:
       - "9001:9000"
     restart: always
+  db:
+    image: mysql:5.7
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - ../mysql/db/data:/var/lib/mysql
+      - ../mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_DATABASE: searchapp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+  redis:
+    image: "redis:latest"
+    ports: 
+      - "6379:6379"
+    volumes:
+      - ../redis/data:/data
