@@ -8,6 +8,7 @@ import cats._
 import cats.effect._
 import cats.implicits._
 import doobie.util.ExecutionContexts
+import fs2.Stream
 import doobie.util.transactor.Transactor.fromDriverManager
 // ConfigFactoryを使うと、.confで書いた設定ファイルをアプリケーションに読み込むことができる。
 import com.typesafe.config.ConfigFactory
@@ -44,5 +45,19 @@ object Test {
     val io = program1.transact(xa)
     println(io.unsafeRunSync)
 
+    // stremaを指定することで、全件総なめすることを防いでいる。
+    // 例えば、今回はtake(5)なので、五件取得した後にDBとのコネクションを切ってくれる
+    val result = sql"select code, name, populatio, gnp from country"
+      .query[Country].stream.take(5).compile.toList.transact(xa).unsafeRunSync
+
+    println(result)
+
   }
 }
+
+case class Country(
+                  code: String,
+                  name: String,
+                  pop: Int,
+                  gnp: Option[Double]
+                  )
