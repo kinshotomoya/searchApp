@@ -15,5 +15,5 @@ object RankingCreateScheduler extends App {
   private val actorSystem = ActorSystem("RankinCreateActorSystem")
   private val rankinCreateMasterActor: ActorRef = actorSystem.actorOf(RankinCreateMasterActor.props, "RankinCreateMasterActor")
 
-  actorSystem.scheduler.schedule(0 seconds, 1 seconds, rankinCreateMasterActor, "s")
+  actorSystem.scheduler.schedule(0 seconds, 30 seconds, rankinCreateMasterActor, "s")
 }
