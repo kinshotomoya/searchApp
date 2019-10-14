@@ -13,7 +13,7 @@ object WebCrawler {
     val urlStr = "http://www.goldsgym.jp"
     try {
       val siteHtml = Jsoup.connect(urlStr).get
-      siteHtml.select(".hogeclass#hogeid")
+//      siteHtml.select(".hogeclass#hogeid")
 
       val shopItems = siteHtml.getElementsByClass("shop-list-item-container").select("[title]").asScala
 
