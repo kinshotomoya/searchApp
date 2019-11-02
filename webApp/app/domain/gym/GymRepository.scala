@@ -12,4 +12,5 @@ import zio.ZIO
 trait GymRepository {
 
   def getGyms(searchCondition: SearchCondition): ZIO[Any, Throwable, SearchResult]
+  def test: ZIO[Any, Throwable, String]
 }

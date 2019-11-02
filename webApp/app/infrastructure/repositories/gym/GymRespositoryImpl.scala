@@ -36,6 +36,8 @@ class GymRespositoryImpl extends GymRepository{
     }
   }
 
+  override def test: ZIO[Any, Throwable, String] = ???
+
   private[this] def executeEsSearch(searchCondition: SearchCondition): Task[SearchResponse] = {
     val url = "elasticsearch://localhost:9200"
     val client = HttpClient(ElasticsearchClientUri(url))
