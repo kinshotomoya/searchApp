@@ -8,4 +8,9 @@ case class SearchResult(
                        gyms: IndexedSeq[Gym],
                        metaData: MetaData
                        ) {
+  def toSearchUseCaseResult: SearchUseCaseResult = {
+    ???
+  }
 }
+
+

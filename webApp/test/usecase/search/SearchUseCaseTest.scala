@@ -28,6 +28,7 @@ class SearchUseCaseTest extends FunSpec with MockitoSugar with DefaultRuntime{
       sessionId = Some("sessionId")
     )
 
+
     val gym = Gym(
       shopname = "サウス東京アネックス",
       phoneNumber = Some(11L),
