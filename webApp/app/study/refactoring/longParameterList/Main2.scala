@@ -4,7 +4,7 @@ class Main2 {
 
   def main(args: Array[String]): Unit = {
     val house = new House()
-     val heatingPlan = HeatingPlan(10, 20)
+     val heatingPlan = HeatingPlans(10, 20)
 
     // 10 20オブジェクトに格納する
     if(house.exceedSettingHeatingPlan(heatingPlan)) {
@@ -16,7 +16,7 @@ class Main2 {
 
 class House {
 
-  def exceedSettingHeatingPlan(heatingPlan: HeatingPlan): Boolean = {
+  def exceedSettingHeatingPlan(heatingPlan: HeatingPlans): Boolean = {
     getHistoryTempList.exists(temp => {
       heatingPlan.contains(temp)
     })
@@ -25,7 +25,7 @@ class House {
   private def getHistoryTempList: List[Int] = List(5, 6, 7, 8)
 }
 
-case class HeatingPlan(bottom: Int, top: Int) {
+case class HeatingPlans(bottom: Int, top: Int) {
   def contains(temp: Int): Boolean = {
     temp < bottom || temp > top
   }
